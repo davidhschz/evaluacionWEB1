@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio 1</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
 </head>
 
 <body>
@@ -15,14 +16,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="ej1.php">Ejercicio 1 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="ej2.php">Ejercicio 2</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" href="ej3.php">Ejercicio 3</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ej4.php">Ejercicio 4</a>
                         </li>
                     </ul>
                 </div>
@@ -44,7 +48,7 @@
                         </div>
                         <div class="form-group mt-2">
                                 <label for="exampleFormControlSelect1">Operación</label>
-                                <select class="form-control" name="operacion">
+                                <select class="form-control" name="operacion" method="POST">
                                     <option value="suma">Suma</option>
                                     <option value="resta">Resta</option>
                                     <option value="multiplicacion">Multiplicación</option>
@@ -55,35 +59,31 @@
                     </form>
                     
                     <?php 
-                    $numero1 = $_POST['primerNumero'];
-                    $numero2 = $_POST['segundoNumero'];
-                    if(isset($_POST["botonCalcular"])){
-                        switch ($_REQUEST['operacion']) {
+                    if(isset($_POST["botonCalcular"])):
+                        $numero1 = $_POST['primerNumero'];
+                        $numero2 = $_POST['segundoNumero']; 
+                        switch ($_POST['operacion']) {
                             case 'suma':
-                                $resultado=$numero1+$numero2;
-                                echo("Resultado: ".$resultado);
-                                break;
+                                $resultado=$numero1+$numero2;?>
+                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
+                                <?php break;
                             
                             case 'resta':
-                                $resultado=$numero1-$numero2;
-                                echo("Resultado: ".$resultado);
-                                break;
+                                $resultado=$numero1-$numero2;?>
+                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
+                                <?php break;
 
                             case 'multiplicacion':
-                                $resultado=$numero1*$numero2;
-                                echo("Resultado: ".$resultado);
-                                break;
+                                $resultado=$numero1*$numero2;?>
+                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
+                                <?php break;
 
                             case 'division':
-                                $resultado=$numero1/$numero2;
-                                echo("Resultado: ".$resultado);
-                                break;
-                        }
-                    }
-                    
-                    
-                    ?>
-
+                                $resultado=$numero1/$numero2;?>
+                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
+                                <?php break;
+                        }?>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
