@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        <a class="nav-link" href="ej1.php">Ejercicio 1 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Ejercicio 1 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="ej2.php">Ejercicio 2</a>

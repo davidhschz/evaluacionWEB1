@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ">
-                            <a class="nav-link active" href="ej1.php">Ejercicio 1 <span class="sr-only">(current)</span></a>
+                            <a class="nav-link active" href="index.php">Ejercicio 1 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="ej2.php">Ejercicio 2</a>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col">
-                    <form action="practica.php" method="POST">
+                    <form action="index.php" method="POST">
                         <div class="row">
                             <div class="col">
                                 <input type="number" class="form-control" placeholder="Primer número" name="primerNumero">
@@ -59,31 +59,39 @@
                     </form>
                     
                     <?php 
-                    if(isset($_POST["botonCalcular"])):
-                        $numero1 = $_POST['primerNumero'];
-                        $numero2 = $_POST['segundoNumero']; 
-                        switch ($_POST['operacion']) {
-                            case 'suma':
-                                $resultado=$numero1+$numero2;?>
-                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
-                                <?php break;
-                            
-                            case 'resta':
-                                $resultado=$numero1-$numero2;?>
-                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
-                                <?php break;
-
-                            case 'multiplicacion':
-                                $resultado=$numero1*$numero2;?>
-                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
-                                <?php break;
-
-                            case 'division':
-                                $resultado=$numero1/$numero2;?>
-                                <h1 class="display-4 text-center"><?php echo("Resultado: ".$resultado)?></h1>;
-                                <?php break;
-                        }?>
-                    <?php endif ?>
+                    if(isset($_POST["botonCalcular"])){
+                        if ($_POST['primerNumero'] != null && $_POST['segundoNumero'] != null && (int)$_POST['primerNumero'] >= 1 && (int)$_POST['segundoNumero'] >= 1){
+                            $numero1 = $_POST['primerNumero'];
+                            $numero2 = $_POST['segundoNumero']; 
+                            switch ($_POST['operacion']) {
+                                case 'suma':
+                                    $resultado=$numero1+$numero2;
+                                    echo "<h1 class='display-4 text-center'>Resultado: {$resultado}</h1>";
+                                    break;
+                                
+                                case 'resta':
+                                    $resultado=$numero1-$numero2;
+                                    echo "<h1 class='display-4 text-center'>Resultado: {$resultado}</h1>";
+                                    break;
+    
+                                case 'multiplicacion':
+                                    $resultado=$numero1*$numero2;
+                                    echo "<h1 class='display-4 text-center'>Resultado: {$resultado}</h1>";
+                                    break;
+    
+                                case 'division':
+                                    $resultado=$numero1/$numero2;
+                                    echo "<h1 class='display-4 text-center'>Resultado: {$resultado}</h1>";
+                                    break;
+                            }
+                        }
+                        else {
+                            $alert = '<div class="alert alert-danger" role="alert">'; 
+                            $alert .= 'Ingrese todos los datos, solo se admiten números enteros positivos.';
+                            $alert .= '</div>';  
+                            echo $alert;
+                        }
+                    }?>
                 </div>
             </div>
         </div>
